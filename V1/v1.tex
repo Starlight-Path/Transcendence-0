@@ -1,0 +1,18 @@
+\documentclass{article}
+\usepackage{parskip}
+\usepackage{forloop}
+
+\usepackage[a5paper, margin=1in]{geometry}
+
+\setlength{\parskip}{2ex}
+\clubpenalty=10000
+
+\begin{document}
+
+This is some text.
+
+\newcounter{c}
+\forloop{c}{1}{\value{c} < 7}{
+  \include{chapters/chapter\arabic{c}.tex}
+}
+\end{document}
