@@ -1,18 +1,28 @@
 \documentclass{article}
 \usepackage{parskip}
 \usepackage{forloop}
-
+\usepackage{wallpaper}
 \usepackage[a5paper, margin=1in]{geometry}
 
 \setlength{\parskip}{2ex}
 \clubpenalty=10000
 
 \begin{document}
+\pagenumbering{gobble}
 
-This is some text.
+\clearpage % Move this command before \ThisCenterWallPaper
 
+% Set background image
+\ThisCenterWallPaper{1}{f2050-0_cover_v1.png}
+\vspace*{\fill}
+\newpage
+\tableofcontents
+
+\pagenumbering{arabic}
 \newcounter{c}
 \forloop{c}{1}{\value{c} < 7}{
   \include{chapters/chapter\arabic{c}.tex}
 }
+
 \end{document}
+
