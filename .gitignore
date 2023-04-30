@@ -2,7 +2,7 @@
 *.pdf
 *.gz
 *.log
-*.latexmk
+*.fdb_latexmk
 *.fls
 *.toc
 *.log
