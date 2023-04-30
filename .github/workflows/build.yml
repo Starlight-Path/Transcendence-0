@@ -16,7 +16,7 @@ jobs:
       run: sudo apt-get install -y texlive-base texlive-latex-extra
 
     - name: Compile LaTeX
-      run: pdflatex -interaction=nonstopmode -halt-on-error V1/v1.tex
+      run: cd V1 && pdflatex -interaction=nonstopmode -halt-on-error v1.tex
 
     - name: Create Release
       id: create_release
