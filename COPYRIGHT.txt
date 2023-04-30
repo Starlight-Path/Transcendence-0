@@ -1,0 +1,7 @@
+Copyright © 2023, Starlight Path
+
+The provided files are available for you to read, distribute, and retrieve, 
+but you must not distribute modified versions.
+
+You should have recieved a copy of the CC-BY-NC-ND file along with this copyright notice. If not,
+you may see https://creativecommons.org/licenses/by-nc-nd/4.0/ for a copy of the CC BY-NC-ND.
