@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+env:
+  DAY_OF_WEEK: Monday
+
+
 jobs:
   build-pdf:
     runs-on: ubuntu-latest
@@ -20,7 +24,7 @@ jobs:
 
     - name: Get release name from file
       id: get_version
-      run: echo ::set-output name=version::$(cat VERSION.txt)
+      run: echo ::set-output name=version::$(cat version) && ls / && ls /V1
 
     - name: Verify PDF file exists
       run: |
