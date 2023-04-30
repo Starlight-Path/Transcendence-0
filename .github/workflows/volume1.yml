@@ -15,11 +15,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Install LaTeX
-      run: sudo apt-get update && sudo apt-get install -y texlive-base texlive-latex-extra latexmk fonts-lmodern cm-super
+    - name: Install docker
+      run: sudo apt install dockerio
 
-    - name: Compile LaTeX
-      run: cd V1 && latexmk -interaction=nonstopmode -halt-on-error v1.tex
+    - name: Build packagae
+      run: ./run.sh
+
 
     - name: Get version from file
       id: get_version
@@ -27,10 +28,10 @@ jobs:
 
     - name: Verify PDF file exists
       run: |
-        if [ ! -f V1/v1.pdf ]; then
+        if [ ! -f v1.pdf ]; then
           echo "PDF file not found"
           exit 1
-        elif [ ! -s V1/v1.pdf ]; then
+        elif [ ! -s V1.pdf ]; then
           echo "PDF file is empty"
           exit 1
         else
@@ -54,6 +55,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: V1/v1.pdf
+        asset_path: v1.pdf
         asset_name: v1.pdf
         asset_content_type: application/pdf
