@@ -4,19 +4,12 @@ on:
   push:
     branches:
       - main
-
-env:
-  DAY_OF_WEEK: Monday
-
 jobs:
-  build-pdf:
+  build-and-push-pdf:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-
-    - name: Install docker
-      run: docker --version
 
     - name: Build packagae
       run: ./run.sh
@@ -31,7 +24,7 @@ jobs:
         if [ ! -f v1.pdf ]; then
           echo "PDF file not found"
           exit 1
-        elif [ ! -s V1.pdf ]; then
+        elif [ ! -s v1.pdf ]; then
           echo "PDF file is empty"
           exit 1
         else
