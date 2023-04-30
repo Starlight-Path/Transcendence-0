@@ -1,4 +1,4 @@
-name: Build PDF
+name: Compile and push PDF
 
 on:
   push:
@@ -7,7 +7,6 @@ on:
 
 env:
   DAY_OF_WEEK: Monday
-
 
 jobs:
   build-pdf:
@@ -22,9 +21,9 @@ jobs:
     - name: Compile LaTeX
       run: cd V1 && pdflatex -interaction=nonstopmode -halt-on-error v1.tex
 
-    - name: Get release name from file
+    - name: Get version from file
       id: get_version
-      run: echo ::set-output name=version::$(cat version)
+      run: echo ::set-output name=version::$(cat VERSION.txt)
 
     - name: Verify PDF file exists
       run: |
@@ -44,11 +43,17 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: refs/tags/v${{ steps.get_version.outputs.version }}
-        release_name: ${{ steps.get_version.outputs.version }}
+        tag_name: v${{ steps.get_version.outputs.version }}
+        release_name: v${{ steps.get_version.outputs.version }}
+        body: |
+          Release $(cat VERSION.txt)
+
+    - name: Upload PDF
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: V1/v1.pdf
         asset_name: v1.pdf
         asset_content_type: application/pdf
-
-
