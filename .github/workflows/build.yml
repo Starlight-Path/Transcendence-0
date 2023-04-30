@@ -45,4 +45,10 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: refs/tags/v${{ steps.get_version.outputs.version }}
-        name: ${{ steps.get_version.outputs.version }}
+        release_name: ${{ steps.get_version.outputs.version }}
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: V1/v1.pdf
+        asset_name: v1.pdf
+        asset_content_type: application/pdf
+
+
