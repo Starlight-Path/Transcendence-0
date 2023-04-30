@@ -18,8 +18,17 @@ jobs:
     - name: Compile Volume 1
       run: cd V1 && pdflatex -interaction=nonstopmode -halt-on-error v1.tex
 
-    - name: Create Release
+    - name: Get release name from file
+      id: get_version
+      run: echo ::set-output name=version::$(cat version)
+
+    - name: Push Release
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        name: ${{ steps.get_version.outputs.version }}
+
+
