@@ -1,6 +1,0 @@
-\contentsline {section}{\numberline {1}A Mere Memory}{1}{}%
-\contentsline {section}{\numberline {2}January 1st, 2051}{4}{}%
-\contentsline {section}{\numberline {3}A Different Warmth}{16}{}%
-\contentsline {section}{\numberline {4}Fresh Starts Don’t Exist}{28}{}%
-\contentsline {section}{\numberline {5}Heaven is Above, not Below}{36}{}%
-\contentsline {section}{\numberline {6}Castles are Light}{45}{}%
