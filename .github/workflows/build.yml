@@ -19,7 +19,7 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y texlive-base texlive-latex-extra
 
     - name: Compile LaTeX
-      run: cd V1 && pdflatex -interaction=nonstopmode -halt-on-error v1.tex
+      run: cd V1 && latexmk -interaction=nonstopmode -halt-on-error v1.tex
 
     - name: Get version from file
       id: get_version
