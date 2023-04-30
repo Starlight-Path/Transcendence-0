@@ -24,14 +24,14 @@ jobs:
 
     - name: Get release name from file
       id: get_version
-      run: echo ::set-output name=version::$(cat version) && ls / && ls /V1
+      run: echo ::set-output name=version::$(cat version) && ls ..
 
     - name: Verify PDF file exists
       run: |
-        if [ ! -f v1.pdf ]; then
+        if [ ! -f ../v1.pdf ]; then
           echo "PDF file not found"
           exit 1
-        elif [ ! -s v1.pdf ]; then
+        elif [ ! -s ../v1.pdf ]; then
           echo "PDF file is empty"
           exit 1
         else
