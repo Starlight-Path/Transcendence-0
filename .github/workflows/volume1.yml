@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Install docker
-      run: sudo apt install docker
+      run: docker --version
 
     - name: Build packagae
       run: ./run.sh
