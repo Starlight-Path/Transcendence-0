@@ -23,7 +23,7 @@ jobs:
 
     - name: Get version from file
       id: get_version
-      run: echo ::set-output name=version::$(cat VERSION.txt)
+      run: echo ::set-output name=version::$(cat version)
 
     - name: Verify PDF file exists
       run: |
@@ -43,10 +43,10 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v${{ steps.get_version.outputs.version }}
-        release_name: v${{ steps.get_version.outputs.version }}
+        tag_name: ${{ steps.get_version.outputs.version }}
+        release_name: ${{ steps.get_version.outputs.version }}
         body: |
-          Release $(cat VERSION.txt)
+          Release ${{ steps.get_version.outputs.version }}
 
     - name: Upload PDF
       uses: actions/upload-release-asset@v1
