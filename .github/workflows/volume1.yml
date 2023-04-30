@@ -1,4 +1,4 @@
-name: Compile and push PDF
+name: Compile and Push PDF for volume 1
 
 on:
   push:
